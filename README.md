@@ -99,15 +99,15 @@
       navigator.clipboard.writeText(texto).then(() => {
         alert("✅ Dados copiados!");
       });
-    }
-  </script>
-</body>
-</html<style>
+    }<style>
   #planilha {
-    width: 100%; /* Ocupa toda a largura disponível */
-    table-layout: auto; /* Ajusta as colunas proporcionalmente */
+    width: 95%;          /* Ocupa quase toda a largura da tela */
+    max-width: 1200px;   /* Limite máximo para não ficar gigante em telas enormes */
+    margin: 0 auto;      /* Centraliza a tabela */
+    table-layout: auto;  /* Ajusta as colunas de acordo com o conteúdo */
   }
+
   #planilha th, #planilha td {
-    min-width: 120px; /* Largura mínima para cada coluna */
+    min-width: 150px;    /* Largura mínima das colunas */
   }
 </style>
