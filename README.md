@@ -98,16 +98,16 @@
       }
       navigator.clipboard.writeText(texto).then(() => {
         alert("✅ Dados copiados!");
-      });
-    }<style>
+      });<style>
   #planilha {
-    width: 95%;          /* Ocupa quase toda a largura da tela */
-    max-width: 1200px;   /* Limite máximo para não ficar gigante em telas enormes */
-    margin: 0 auto;      /* Centraliza a tabela */
-    table-layout: auto;  /* Ajusta as colunas de acordo com o conteúdo */
+    width: 100vw;         /* Ocupa toda a largura da tela */
+    max-width: none;      /* Remove limite máximo */
+    margin: 0 auto;       /* Centraliza horizontalmente */
+    table-layout: fixed;  /* Faz todas as colunas se distribuírem igualmente */
   }
 
   #planilha th, #planilha td {
-    min-width: 150px;    /* Largura mínima das colunas */
+    width: 20%;           /* Cada coluna ocupa 20% da tabela (5 colunas) */
+    min-width: 120px;     /* Garante que não fique apertada */
   }
 </style>
