@@ -1,4 +1,4 @@
-# planilha<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -6,95 +6,100 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      background: #f4f6f8;
       margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #ff6600;
-      color: white;
       padding: 20px;
+    }
+    h1 {
       text-align: center;
-      font-size: 24px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      color: #2c3e50;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
     }
     th, td {
-      padding: 10px;
-      text-align: left;
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
     }
     th {
-      background: #ff6600;
-      color: white;
+      background: #2c3e50;
+      color: #fff;
     }
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
+    tr:nth-child(even) {
+      background: #f9f9f9;
     }
-    button {
-      background: #ff6600;
-      color: white;
+    .btn {
+      display: inline-block;
+      background: #27ae60;
+      color: #fff;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
+      transition: 0.3s;
     }
-    button:hover {
-      background: #e65c00;
+    .btn:hover {
+      background: #2ecc71;
+    }
+    .logo {
+      display: none; /* logo está oculta */
     }
   </style>
 </head>
 <body>
+  <h1>📑 Impressão Rápida</h1>
 
-<header>Impressão Rápida</header>
+  <!-- Logo oculta -->
+  <img src="logo.png" alt="Logo Impressão Rápida" class="logo">
 
-<div class="container">
-  <h2>Adicionar Agendamento</h2>
-  <input type="text" id="nome" placeholder="Nome da pessoa">
-  <input type="text" id="servico" placeholder="Serviço">
-  <button onclick="adicionarAgendamento()">Adicionar</button>
-
-  <table id="tabela">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Serviço</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Linhas adicionadas aqui -->
-    </tbody>
+  <table id="planilha">
+    <tr>
+      <th>Nome</th>
+      <th>Serviço</th>
+      <th>Horário</th>
+      <th>Data</th>
+      <th>Qtd. Páginas</th>
+    </tr>
   </table>
-</div>
 
-<script>
-  function adicionarAgendamento() {
-    const nome = document.getElementById('nome').value;
-    const servico = document.getElementById('servico').value;
-    if(nome && servico) {
-      const tabela = document.getElementById('tabela').getElementsByTagName('tbody')[0];
-      const linha = tabela.insertRow();
-      linha.insertCell(0).innerText = nome;
-      linha.insertCell(1).innerText = servico;
-      document.getElementById('nome').value = '';
-      document.getElementById('servico').value = '';
-    } else {
-      alert('Preencha os campos!');
+  <div style="text-align:center;">
+    <button class="btn" onclick="adicionarLinha()">➕ Adicionar Linha</button>
+    <button class="btn" onclick="copiarTabela()">📋 Copiar Dados</button>
+  </div>
+
+  <script>
+    function adicionarLinha() {
+      const tabela = document.getElementById("planilha");
+      const linha = tabela.insertRow(-1);
+      for (let i = 0; i < 5; i++) {
+        const celula = linha.insertCell(i);
+        celula.contentEditable = "true";
+        celula.style.background = "#fffbe7";
+      }
     }
-  }
-</script>
 
+    function copiarTabela() {
+      const tabela = document.getElementById("planilha");
+      let texto = "";
+      for (let row of tabela.rows) {
+        let cols = [];
+        for (let cell of row.cells) {
+          cols.push(cell.innerText);
+        }
+        texto += cols.join(" | ") + "\n";
+      }
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("✅ Dados copiados!");
+      });
+    }
+  </script>
 </body>
 </html>
