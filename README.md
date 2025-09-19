@@ -102,4 +102,12 @@
     }
   </script>
 </body>
-</html>
+</html<style>
+  #planilha {
+    width: 100%; /* Ocupa toda a largura disponível */
+    table-layout: auto; /* Ajusta as colunas proporcionalmente */
+  }
+  #planilha th, #planilha td {
+    min-width: 120px; /* Largura mínima para cada coluna */
+  }
+</style>
