@@ -14,26 +14,38 @@
       text-align: center;
       color: #2c3e50;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Logo oculta */
+    .logo {
+      display: none;
+    }
+    /* Tabela esticada */
+    #planilha {
+      width: 100vw;          /* Ocupa toda a largura da tela */
+      max-width: none;       /* Sem limite de largura */
       margin: 20px auto;
+      table-layout: fixed;   /* Colunas iguais */
+      border-collapse: collapse;
       background: #fff;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       border-radius: 10px;
       overflow: hidden;
     }
-    th, td {
+    #planilha th, #planilha td {
       padding: 12px;
       border: 1px solid #ddd;
       text-align: center;
+      width: 20%;           /* 5 colunas, 20% cada */
+      min-width: 120px;
     }
-    th {
+    #planilha th {
       background: #2c3e50;
       color: #fff;
     }
     tr:nth-child(even) {
       background: #f9f9f9;
+    }
+    tr:hover {
+      background: #f0f0f0;
     }
     .btn {
       display: inline-block;
@@ -49,9 +61,6 @@
     .btn:hover {
       background: #2ecc71;
     }
-    .logo {
-      display: none; /* logo está oculta */
-    }
   </style>
 </head>
 <body>
@@ -66,7 +75,7 @@
       <th>Serviço</th>
       <th>Horário</th>
       <th>Data</th>
-      <th>Qtd. Páginas</th>
+      <th>Quantidade de Páginas</th>
     </tr>
   </table>
 
@@ -98,16 +107,8 @@
       }
       navigator.clipboard.writeText(texto).then(() => {
         alert("✅ Dados copiados!");
-      });<style>
-  #planilha {
-    width: 100vw;         /* Ocupa toda a largura da tela */
-    max-width: none;      /* Remove limite máximo */
-    margin: 0 auto;       /* Centraliza horizontalmente */
-    table-layout: fixed;  /* Faz todas as colunas se distribuírem igualmente */
-  }
-
-  #planilha th, #planilha td {
-    width: 20%;           /* Cada coluna ocupa 20% da tabela (5 colunas) */
-    min-width: 120px;     /* Garante que não fique apertada */
-  }
-</style>
+      });
+    }
+  </script>
+</body>
+</html>
